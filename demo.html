@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<!-- saved from url=(0164)https://skyagent-artifacts.skywork.ai/page/2024286546519076864/bfca9411-33b5-4b83-a6e8-b303ce044de0/prod_agent_2024286546519076864/renovation_planner_demo_site.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Day Home Renovation Planner - FREE DEMO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header with Background Image */
+        .header {
+            background-image: url('https://skyagent-artifacts.skywork.ai/image/2024286546519076864/d463938e-9a27-43da-aedd-61401efdc490/prod_agent_2024286546519076864/renovation_banner_background_20260221113940_1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 58, 138, 0.3);
+            border-radius: 15px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .demo-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Georgia', serif;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .upgrade-btn {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .upgrade-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .stat-card.days::before {
+            background-image: url('https://skyagent-artifacts.skywork.ai/image/2024286546519076864/4cdeeb4f-a331-4a0b-8efd-be288b462465/prod_agent_2024286546519076864/calendar_days_background_20260221113953_1.png');
+        }
+
+        .stat-card.budget::before {
+            background-image: url('https://skyagent-artifacts.skywork.ai/image/2024286546519076864/bd0bda3f-b136-4838-9739-70461a658e9e/prod_agent_2024286546519076864/budget_money_background_20260221114008_1.png');
+        }
+
+        .stat-card.tasks::before {
+            background-image: url('https://skyagent-artifacts.skywork.ai/image/2024286546519076864/7d71e24e-9793-4dc4-a578-875f88029635/prod_agent_2024286546519076864/tasks_completed_background_20260221114021_1.png');
+        }
+
+        .stat-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .demo-limitation {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px dashed #ff6b6b;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 15px;
+            color: #dc2626;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #64748b;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            box-shadow: 0 3px 10px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-day {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .timeline-tasks {
+            list-style: none;
+        }
+
+        .timeline-tasks li {
+            padding: 5px 0;
+            color: #64748b;
+        }
+
+        .timeline-tasks li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .locked-days {
+            background: rgba(107, 114, 128, 0.1);
+            border: 2px dashed #6b7280;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .locked-days h3 {
+            color: #6b7280;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .locked-days p {
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        /* Budget Calculator */
+        .budget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .budget-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .budget-label {
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .budget-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .budget-total {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .budget-total h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .budget-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Checklists */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .checklist-card {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .checklist-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .checklist-items {
+            list-style: none;
+        }
+
+        .checklist-items li {
+            padding: 8px 0;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+        }
+
+        .checklist-items input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        /* Upgrade Prompts */
+        .upgrade-prompt {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .upgrade-prompt h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .upgrade-prompt p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* Print Button */
+        .print-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 15px;
+        }
+
+        .print-btn {
+            background: linear-gradient(45dc, #10b981, #059669);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .print-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-day {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+
+        /* Watermarks */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 4rem;
+            color: rgba(255, 107, 107, 0.1);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">DEMO VERSION</div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="demo-badge">🆓 FREE 7-DAY DEMO</div>
+                <h1>Home Renovation Planner</h1>
+                <p>Experience the power of organized renovation planning</p>
+                <a href="https://skyagent-artifacts.skywork.ai/page/2024286546519076864/bfca9411-33b5-4b83-a6e8-b303ce044de0/prod_agent_2024286546519076864/renovation_planner_demo_site.html#upgrade" class="upgrade-btn">🚀 UNLOCK FULL 30-DAY VERSION - $27</a>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card days">
+                <div class="stat-content">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Days Available</div>
+                    <div class="demo-limitation">Demo: Only 7 of 30 days shown</div>
+                </div>
+            </div>
+            <div class="stat-card budget">
+                <div class="stat-content">
+                    <div class="stat-number">$<span id="totalBudget">0</span></div>
+                    <div class="stat-label">Total Budget</div>
+                    <div class="demo-limitation">Demo: Basic calculator only</div>
+                </div>
+            </div>
+            <div class="stat-card tasks">
+                <div class="stat-content">
+                    <div class="stat-number"><span id="completedTasks">0</span>%</div>
+                    <div class="stat-label">Tasks Completed</div>
+                    <div class="demo-limitation">Demo: Limited tracking</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection(&#39;timeline&#39;)">📅 Timeline</button>
+            <button class="nav-tab" onclick="showSection(&#39;budget&#39;)">💰 Budget</button>
+            <button class="nav-tab" onclick="showSection(&#39;checklists&#39;)">✅ Checklists</button>
+            <button class="nav-tab" onclick="showSection(&#39;print&#39;)">🖨️ Print</button>
+        </div>
+
+        <!-- Timeline Section -->
+        <div id="timeline" class="content-section active">
+            <h2 class="section-title">📅 7-Day Renovation Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-day">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Planning &amp; Preparation</div>
+                        <ul class="timeline-tasks">
+                            <li>Create detailed project scope</li>
+                            <li>Set realistic budget expectations</li>
+                            <li>Research contractors and suppliers</li>
+                            <li>Apply for necessary permits</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-day">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Design &amp; Materials</div>
+                        <ul class="timeline-tasks">
+                            <li>Finalize design plans</li>
+                            <li>Order materials and fixtures</li>
+                            <li>Schedule delivery dates</li>
+                            <li>Confirm contractor availability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-day">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Preparation &amp; Setup</div>
+                        <ul class="timeline-tasks">
+                            <li>Clear and protect work areas</li>
+                            <li>Set up temporary utilities</li>
+                            <li>Organize tools and materials</li>
+                            <li>Final safety preparations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-day">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Demolition Phase</div>
+                        <ul class="timeline-tasks">
+                            <li>Remove old fixtures and fittings</li>
+                            <li>Tear down walls (if applicable)</li>
+                            <li>Dispose of debris properly</li>
+                            <li>Inspect structural elements</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-day">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Structural Work</div>
+                        <ul class="timeline-tasks">
+                            <li>Frame new walls</li>
+                            <li>Install or modify plumbing</li>
+                            <li>Update electrical systems</li>
+                            <li>HVAC modifications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-day">6</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Insulation &amp; Drywall</div>
+                        <ul class="timeline-tasks">
+                            <li>Install insulation</li>
+                            <li>Hang and tape drywall</li>
+                            <li>Apply primer coat</li>
+                            <li>Prepare for finishing work</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-day">7</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">Initial Finishing</div>
+                        <ul class="timeline-tasks">
+                            <li>Sand and prepare surfaces</li>
+                            <li>Apply base paint coats</li>
+                            <li>Install subflooring</li>
+                            <li>Begin fixture installation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="locked-days">
+                <h3>🔒 Days 8-30 Locked</h3>
+                <p>See the complete 30-day timeline including flooring, painting, final installations, and project completion in the full version.</p>
+                <a href="https://skyagent-artifacts.skywork.ai/page/2024286546519076864/bfca9411-33b5-4b83-a6e8-b303ce044de0/prod_agent_2024286546519076864/renovation_planner_demo_site.html#upgrade" class="upgrade-btn">Unlock Full Timeline - $27</a>
+            </div>
+        </div>
+
+        <!-- Budget Section -->
+        <div id="budget" class="content-section">
+            <h2 class="section-title">💰 Budget Calculator (Demo)</h2>
+            
+            <div class="budget-grid">
+                <div class="budget-item">
+                    <div class="budget-label">Materials</div>
+                    <input type="number" class="budget-input" placeholder="Enter amount" onchange="updateBudget()">
+                </div>
+                <div class="budget-item">
+                    <div class="budget-label">Labor</div>
+                    <input type="number" class="budget-input" placeholder="Enter amount" onchange="updateBudget()">
+                </div>
+                <div class="budget-item">
+                    <div class="budget-label">Permits</div>
+                    <input type="number" class="budget-input" placeholder="Enter amount" onchange="updateBudget()">
+                </div>
+            </div>
+
+            <div class="budget-total">
+                <h3>Total Budget</h3>
+                <div class="budget-amount">$<span id="budgetTotal">0</span></div>
+            </div>
+
+            <div class="upgrade-prompt">
+                <h3>🚀 Unlock Advanced Budget Features</h3>
+                <p>Get 15+ budget categories, expense tracking, cost predictions, and detailed financial reports</p>
+                <a href="https://skyagent-artifacts.skywork.ai/page/2024286546519076864/bfca9411-33b5-4b83-a6e8-b303ce044de0/prod_agent_2024286546519076864/renovation_planner_demo_site.html#upgrade" class="upgrade-btn">Upgrade Now - $27</a>
+            </div>
+        </div>
+
+        <!-- Checklists Section -->
+        <div id="checklists" class="content-section">
+            <h2 class="section-title">✅ Renovation Checklists (Sample)</h2>
+            
+            <div class="checklist-grid">
+                <div class="checklist-card">
+                    <div class="checklist-title">Planning Phase</div>
+                    <ul class="checklist-items">
+                        <li><input type="checkbox"> Set project budget</li>
+                        <li><input type="checkbox"> Research contractors</li>
+                        <li><input type="checkbox"> Apply for permits</li>
+                        <li><input type="checkbox"> Create timeline</li>
+                        <li><input type="checkbox"> Order materials</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-card">
+                    <div class="checklist-title">Safety Preparation</div>
+                    <ul class="checklist-items">
+                        <li><input type="checkbox"> Safety equipment ready</li>
+                        <li><input type="checkbox"> Work area secured</li>
+                        <li><input type="checkbox"> Utilities marked</li>
+                        <li><input type="checkbox"> Emergency contacts listed</li>
+                        <li><input type="checkbox"> Insurance updated</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="upgrade-prompt">
+                <h3>🔓 Unlock Complete Checklist Library</h3>
+                <p>Access 50+ detailed checklists for every renovation phase: Kitchen, Bathroom, Electrical, Plumbing, Flooring, and more!</p>
+                <a href="https://skyagent-artifacts.skywork.ai/page/2024286546519076864/bfca9411-33b5-4b83-a6e8-b303ce044de0/prod_agent_2024286546519076864/renovation_planner_demo_site.html#upgrade" class="upgrade-btn">Get Full Access - $27</a>
+            </div>
+        </div>
+
+        <!-- Print Section -->
+        <div id="print" class="content-section">
+            <h2 class="section-title">🖨️ Print Options</h2>
+            
+            <div class="print-section">
+                <h3>Print Your Planning Documents</h3>
+                <p>Generate professional reports for your renovation project</p>
+                
+                <button class="print-btn" onclick="printDemo()">Print 7-Day Timeline</button>
+                <button class="print-btn" disabled="">Print Budget Report (Premium)</button>
+                <button class="print-btn" disabled="">Print All Checklists (Premium)</button>
+                
+                <div class="upgrade-prompt" style="margin-top: 30px;">
+                    <h3>📄 Unlock Professional Print Features</h3>
+                    <p>Print complete timelines, detailed budget reports, contractor worksheets, and progress tracking sheets</p>
+                    <a href="https://skyagent-artifacts.skywork.ai/page/2024286546519076864/bfca9411-33b5-4b83-a6e8-b303ce044de0/prod_agent_2024286546519076864/renovation_planner_demo_site.html#upgrade" class="upgrade-btn">Upgrade for Full Print Access - $27</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Upgrade Call-to-Action -->
+        <div class="upgrade-prompt" style="margin-top: 50px; font-size: 1.1rem;">
+            <h3>🚀 Ready to Unlock the Complete 30-Day Renovation Planner?</h3>
+            <p>Get the full timeline, advanced budget calculator, complete checklist library, expense tracking, and professional print options</p>
+            <a href="https://risemedia.gumroad.com/l/30dayreno" class="upgrade-btn" style="font-size: 1.3rem; padding: 20px 50px;">GET FULL VERSION - ONLY $27</a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">⭐ One-time payment • Instant download • 30-day money-back guarantee</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function updateBudget() {
+            const inputs = document.querySelectorAll('.budget-input');
+            let total = 0;
+            
+            inputs.forEach(input => {
+                const value = parseFloat(input.value) || 0;
+                total += value;
+            });
+            
+            document.getElementById('budgetTotal').textContent = total.toLocaleString();
+            document.getElementById('totalBudget').textContent = total.toLocaleString();
+        }
+
+        function printDemo() {
+            const printContent = `
+                <h1>7-Day Renovation Timeline - DEMO VERSION</h1>
+                <p><strong>This is a preview of the full 30-day renovation planner.</strong></p>
+                <h2>Days 1-7 Available in Demo:</h2>
+                <ul>
+                    <li>Day 1: Planning & Preparation</li>
+                    <li>Day 2: Design & Materials</li>
+                    <li>Day 3: Preparation & Setup</li>
+                    <li>Day 4: Demolition Phase</li>
+                    <li>Day 5: Structural Work</li>
+                    <li>Day 6: Insulation & Drywall</li>
+                    <li>Day 7: Initial Finishing</li>
+                </ul>
+                <p><strong>Days 8-30 available in full version only.</strong></p>
+                <p>Upgrade to get the complete timeline: <a href="https://risemedia.gumroad.com/l/30dayreno">https://risemedia.gumroad.com/l/30dayreno</a></p>
+            `;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head><title>7-Day Timeline - Demo</title></head>
+                    <body style="font-family: Arial, sans-serif; padding: 20px;">
+                        ${printContent}
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Update task completion percentage
+        function updateTaskCompletion() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const percentage = checkboxes.length > 0 ? Math.round((checkedBoxes.length / checkboxes.length) * 100) : 0;
+            document.getElementById('completedTasks').textContent = percentage;
+        }
+
+        // Add event listeners to checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateTaskCompletion);
+            });
+        });
+    </script>
+
+</body></html>
